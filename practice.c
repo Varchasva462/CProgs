@@ -362,3 +362,160 @@ int main()
   printf("\nYour number is :%d",no);
 
 }
+
+//hello name
+#include<stdio.h>
+void main()
+{
+  char name[15];
+  printf("\nEnter your name: ");
+  gets(name);
+  fflush(stdin);
+  printf("HI! ");
+  puts(name);
+}
+
+//factorial
+#include<stdio.h>
+int factorial(int value)
+{
+  if(value==1) return 1;
+  else return(value*factorial(value-1));
+}
+
+void main()
+{
+  int i;
+  printf("\nEnter a number :");
+  scanf("%d",&i);
+  printf("The factorial of %d is %d\n",i,factorial(i));
+}
+
+//marks of 50 students
+#include<stdio.h>
+#define maxval 50
+void main()
+{
+  int value[maxval];
+  int group[11]= {0};
+  int i,low,high;
+
+  printf("\nEnter the marks of all students: ");
+  
+  for(i=0;i<maxval;i++)
+  {
+    scanf("%d",&value[i]);  
+    group[(int) (value[i])/10]++;
+  }
+
+  printf("\nGroup   Range   Frequency\n\n");
+  for(i=0;i<11;i++)
+  {
+    low=i*10;
+    if(i==10) high=100;
+    else 
+    high =low+9;
+    printf("%2d   %3d to %3d   %2d\n", i,low,high,group[i]);     //%2d is width specifier
+
+  }
+}
+
+//SALESGIRL PS
+#include<stdio.h>
+void main()
+{
+  int sales[4][3];
+  int i,j,sum;
+
+  for(i=0;i<4;i++)
+  {
+    printf("\nEnter the sales of girl %d: ",i+1);
+    for(j=0;j<3;j++)
+    {
+      scanf("%d",&sales[i][j]);
+    }
+  }
+
+  printf("\nSalesgirl   Item 1   Item 2   Item 3");
+  printf("\n");
+  for(i=0;i<4;i++)
+  {
+    printf("%5d       ", i+1);
+        for(j=0;j<3;j++)
+    {
+      printf("%6d   ",sales[i][j]);      
+    }
+    printf("\n");
+  }
+
+  printf("\nSALES BY GIRLS\n");
+  
+  for(i=0;i<4;i++)
+  {
+    sum=0;
+    for(j=0;j<3;j++) sum=sum+sales[i][j];    
+    printf("\nSales by girl %d is: %d\n", i+1,sum);
+  }
+
+  printf("\nTOTAL ITEM VALUES\n");
+
+  for(j=0;j<3;j++)
+  {
+    sum=0;
+    for(i=0;i<4;i++) sum=sum+sales[i][j];  
+    printf("\nTotal value of item %d is: %d\n",j+1,sum);  
+  }
+}
+
+// X-Border sum
+#include<stdio.h>
+int main()
+{
+    int n,i,j,sum=0;
+
+    printf("\nEnter the number of rows and columns to print: ");
+    scanf("%d",&n);
+
+    int arr[n][n];
+
+    printf("\nEnter the elements: ");
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            scanf("%d",&arr[i][j]);
+        }
+    }
+
+    for(j=0;j<n;j++)
+    {
+        sum=sum+arr[0][j];
+        sum=sum+arr[n-1][j];
+    }
+
+    for(i=0;i<n;i++)
+    {
+        sum=sum+arr[i][0];
+        sum=sum+arr[i][n-1];
+    }
+
+    sum=sum-arr[0][0]-arr[0][n-1]-arr[n-1][0]-arr[n-1][n-1];
+
+    for(i=1;i<n-1;i++)
+    {
+        for(j=1;j<n-1;j++)
+        {
+            if(i==j||i==n-j-1)
+            {
+                sum=sum+arr[i][j];
+            }
+        }
+    }
+   
+
+    printf("%d",sum);
+
+    return 0;
+}
+
+
